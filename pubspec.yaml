@@ -1,6 +1,6 @@
 name: dart_console
 description: Console support for Dart.
-version: 1.0.0
+version: 1.0.1
 repository: https://github.com/dorireuv/dart_console
 publish_to: none
 
@@ -12,10 +12,12 @@ dependencies:
     git:
       url: https://github.com/dorireuv/dart_guava.git
       ref: main
+      version: 1.0.1
   dart_ansi:
     git:
       url: https://github.com/dorireuv/dart_ansi.git
       ref: main
+      version: 1.0.1
 
 dev_dependencies:
   lints: ^2.1.0
