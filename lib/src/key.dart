@@ -52,18 +52,27 @@ final class Key {
     checkArgument((charCode == null) != (controlCharacter == null));
   }
 
-  ControlCharacter get controlCharacter {
+  ControlCharacter? get controlCharacter {
     final controlCharacter = _controlCharacter;
     if (controlCharacter != null) {
       return controlCharacter;
     }
 
     final charCode = _charCode;
-    if (charCode != null) {
+    if (charCode != null && CharCodes.isControlCharacter(charCode)) {
       return ControlCharacter.fromCharCode(charCode);
     }
 
-    throw AssertionError('Unreachable code');
+    return null;
+  }
+
+  String? get printableChar {
+    final charCode = _charCode;
+    if (charCode != null && CharCodes.isPrintable(charCode)) {
+      return String.fromCharCode(charCode);
+    }
+
+    return null;
   }
 
   @override
