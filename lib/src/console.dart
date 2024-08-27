@@ -24,7 +24,12 @@ class Console {
 
   void print(Object? object) => stdout.write(object);
 
-  void println(Object? object) => stdout.writeln(object);
+  void println([Object? object = '']) => stdout.writeln(object);
+
+  void printAt(Object? object, {required int row, required int col}) {
+    stdout.write(AnsiSequences.moveCursor(row: row, col: col));
+    stdout.write(object);
+  }
 
   Key? readKey() => _reader.readKey();
 
