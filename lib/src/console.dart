@@ -14,6 +14,13 @@ class Console {
 
   Console({Reader? reader}) : _reader = reader ?? Reader();
 
+  void moveCursor({required int row, required int col}) =>
+      stdout.write(AnsiSequences.moveCursor(row: row, col: col));
+
+  void showCursor() => stdout.write(AnsiSequences.showCursor);
+
+  void hideCursor() => stdout.write(AnsiSequences.hideCursor);
+
   void clearScreenAndMoveCursorHome() {
     stdout.write(AnsiSequences.clearScreen);
     stdout.write(AnsiSequences.moveCursorHome);
@@ -27,7 +34,7 @@ class Console {
   void println([Object? object = '']) => stdout.writeln(object);
 
   void printAt(Object? object, {required int row, required int col}) {
-    stdout.write(AnsiSequences.moveCursor(row: row, col: col));
+    moveCursor(row: row, col: col);
     stdout.write(object);
   }
 
